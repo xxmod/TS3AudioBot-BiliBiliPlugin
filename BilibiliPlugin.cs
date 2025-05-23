@@ -139,6 +139,7 @@ public class BilibiliPlugin : IBotPlugin
                 try
                 {
                     await _playManager.Enqueue(invoker, url);
+                    Console.WriteLine(url);
                     return $"正在播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
                 }
                 catch
