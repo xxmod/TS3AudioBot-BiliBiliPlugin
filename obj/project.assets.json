@@ -295,11 +295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin\\BilibiliPlugin.csproj",
+      "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj",
       "projectName": "BilibiliPlugin",
-      "projectPath": "D:\\TS3bilibili\\BilibiliPlugin\\BilibiliPlugin.csproj",
+      "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj",
       "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-      "outputPath": "D:\\TS3bilibili\\BilibiliPlugin\\obj\\",
+      "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"
