@@ -26,5 +26,15 @@
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
-3.使用`!bilibili login SESSDATA=[SESSDATA];` 用cookie登录
+3.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录
+
+
+
+#### SESSDATA与bili_jct查询方法
+
+1.正常登录网页版bilibili
+
+2.右键网页检查选择应用程序
+
+3.Cookie下的https://message.bilibili.com中有名为SESSDATA与bili_jct的值即需要的数据
 
