@@ -22,7 +22,7 @@
 
 ## 使用方法
 
-1.私聊机器人使用`!plugin load [插件编号]`命令加载插件，插件编号可以通过`!plugin lists`查看
+1.私聊机器人使用`!plugin load []`命令加载插件
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
@@ -36,5 +36,5 @@
 
 2.右键网页检查选择应用程序
 
-3.Cookie下的https://message.bilibili.com中有名为SESSDATA与bili_jct的值即需要的数据
+3.Cookie下的https://message.bilibili.com 中有名为SESSDATA与bili_jct的值即需要的数据
 

@@ -127,48 +127,55 @@ public class BilibiliPlugin : IBotPlugin
 
     private async Task<string> PlayAudio(long cid, string bvid, InvokerData invoker)
     {
-        try
+    try
+    {
+        string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
+        string playJson = await http.GetStringAsync(playApi);
+        JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
+
+        if (audioArray == null)
+            return "未能获取音频流地址，视频可能不支持 DASH 音频。";
+
+        JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
+        if (bestAudio == null)
+            return "未能获取有效的音频链接。";
+
+        // 构建 URL 和来源名的列表
+        var urlSources = new List<(string Url, string Type)>
         {
-            string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
-            string playJson = await http.GetStringAsync(playApi);
-            JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
+            ((string)bestAudio["baseUrl"], "baseUrl"),
+            ((string)bestAudio["base_url"], "base_url")
+        };
 
-            if (audioArray == null)
-                return "未能获取音频流地址，视频可能不支持 DASH 音频。";
+        if (bestAudio["backupUrl"] is JArray backupUrls)
+            urlSources.AddRange(backupUrls.Select(u => (u.ToString(), "backupUrl")));
 
-            JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
-            if (bestAudio == null)
-                return "未能获取有效的音频链接。";
+        if (bestAudio["backup_url"] is JArray backupUrls2)
+            urlSources.AddRange(backupUrls2.Select(u => (u.ToString(), "backup_url")));
 
-            var urls = new List<string>
+        // 依次尝试播放每个 URL
+        foreach (var (url, type) in urlSources)
+        {
+            if (string.IsNullOrWhiteSpace(url)) continue;
+            try
             {
-                (string)bestAudio["baseUrl"],
-                (string)bestAudio["base_url"]
-            };
-
-            if (bestAudio["backupUrl"] is JArray backupUrls)
-                urls.AddRange(backupUrls.Select(u => u.ToString()));
-
-            foreach (string url in urls)
-            {
-                if (string.IsNullOrWhiteSpace(url)) continue;
-                try
-                {
-                    await _playManager.Enqueue(invoker, url);
-                    Console.WriteLine(url);
-                    return $"正在播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
-                }
-                catch
-                {
-                    // 尝试下一个
-                }
+                await _playManager.Enqueue(invoker, url);
+                Console.WriteLine($"播放成功：{type} - {url}");
+                return $"正在播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"播放失败：{type} - {url}\n原因: {ex.Message}");
+                // 尝试下一个
+            }
+        }
 
-            return "所有音频链接播放失败。";
-        }
-        catch (Exception ex)
-        {
-            return "播放失败：" + ex.Message;
-        }
+        return "所有音频链接播放失败。";
     }
+    catch (Exception ex)
+    {
+        return "播放失败：" + ex.Message;
+    }
+    }
+
 }
