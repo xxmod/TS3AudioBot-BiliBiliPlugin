@@ -42,17 +42,33 @@ public class BilibiliPlugin : IBotPlugin
     }
 
     [Command("bilibili login")]
-    public string BilibiliLogin(InvokerData invoker, string cookie)
+    public async Task<string> BilibiliLogin(InvokerData invoker, string cookie)
     {
-        if (string.IsNullOrWhiteSpace(cookie))
-            return "用法: !bilibili login [SESSDATA=xxx; bili_jct=xxx;...]";
+    if (string.IsNullOrWhiteSpace(cookie))
+        return "用法: !bilibili login [SESSDATA=xxx; bili_jct=xxx;...]";
 
-        File.WriteAllText(cookieFile, cookie);
-        http.DefaultRequestHeaders.Remove("Cookie");
-        http.DefaultRequestHeaders.Add("Cookie", cookie);
+    // 保存并设置 Cookie
+    File.WriteAllText(cookieFile, cookie);
+    http.DefaultRequestHeaders.Remove("Cookie");
+    http.DefaultRequestHeaders.Add("Cookie", cookie);
 
-        return "登录 Cookie 已设置成功。";
+    try
+    {
+        string userJson = await http.GetStringAsync("https://api.bilibili.com/x/web-interface/nav");
+        JObject userObj = JObject.Parse(userJson);
+        string uname = userObj["data"]?["uname"]?.ToString();
+
+        if (!string.IsNullOrEmpty(uname))
+            return $"登录成功，当前账号：{uname}";
+
+        return "Cookie 已设置，但未能确认登录状态。请检查 Cookie 是否有效。";
     }
+    catch (Exception ex)
+    {
+        return "登录状态确认失败：" + ex.Message;
+    }
+    }
+
 
     [Command("bilibili bv")]
     public async Task<string> BilibiliBvCommand(InvokerData invoker, string bvid)

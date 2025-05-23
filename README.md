@@ -8,7 +8,7 @@
 
 1.进入以下链接下载编译好的插件
 
-[下载插件](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll)
+[下载插件](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll)
 
 2.将插件放置于TS3AudioBot的Plugins目录下
 
