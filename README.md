@@ -12,7 +12,7 @@
 
 2.将插件放置于TS3AudioBot的Plugins目录下
 
-3.在right.toml中添加cmd.bilibili权限
+3.在right.toml中添加cmd.bilibili cmd.bilibili.bv cmd.bilibili.p cmd.bilibili.login权限
 
 
 
