@@ -4,7 +4,7 @@
 
 
 
-## 使用方法
+## 安装方法
 
 1.进入以下链接下载编译好的插件
 
@@ -14,7 +14,13 @@
 
 3.在right.toml中添加cmd.bilibili权限
 
-3.私聊机器人使用`!plugin load []`命令加载插件
 
-4.使用`!bilibili [BV号]`使用插件
+
+## 使用方法
+
+1.私聊机器人使用`!plugin load []`命令加载插件
+
+2.使用`!bilibili bv [BV号]`播放对应视频的音频
+
+3.使用`!bilibili login SESSDATA=[SESSDATA];` 用cookie登录
 
