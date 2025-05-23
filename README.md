@@ -22,7 +22,7 @@
 
 ## 使用方法
 
-1.私聊机器人使用`!plugin load []`命令加载插件
+1.私聊机器人使用`!plugin load [插件编号]`命令加载插件，插件编号可以通过`!plugin lists`查看
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
