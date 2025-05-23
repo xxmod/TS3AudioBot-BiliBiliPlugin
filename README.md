@@ -12,7 +12,11 @@
 
 2.将插件放置于TS3AudioBot的Plugins目录下
 
-3.在right.toml中添加cmd.bilibili cmd.bilibili.bv cmd.bilibili.p cmd.bilibili.login权限
+3.下载并将Newtonsoft.json.dll放与TS3AudioBot根目录
+
+[Newtonsoft.json.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll)
+
+4.在right.toml中添加cmd.bilibili cmd.bilibili.bv cmd.bilibili.p cmd.bilibili.login权限
 
 
 
