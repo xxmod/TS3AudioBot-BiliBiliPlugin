@@ -1,0 +1,2 @@
+# TS3AudioBot-BiliBiliPlugin
+使用TS3AudioBot播放Bilibili音频
