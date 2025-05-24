@@ -18,6 +18,8 @@ public class BilibiliPlugin : IBotPlugin
     private static string cookieFile = "bili_cookie.txt";
     private static string savedBvid = "";
     private static JArray savedPages;
+    private static List<(string bvid, long cid, string title)> recentHistory = new List<(string bvid, long cid, string title)>();
+
 
     public BilibiliPlugin(PlayManager playManager)
     {
@@ -67,6 +69,59 @@ public class BilibiliPlugin : IBotPlugin
     {
         return "登录状态确认失败：" + ex.Message;
     }
+    }
+
+    [Command("bilibili history")]
+    public async Task<string> BilibiliHistory(InvokerData invoker)
+    {
+    try
+    {
+        string url = "https://api.bilibili.com/x/web-interface/history/cursor?ps=10&type=archive";
+        string json = await http.GetStringAsync(url);
+        JObject data = JObject.Parse(json)["data"] as JObject;
+        JArray list = data?["list"] as JArray;
+
+        if (list == null || list.Count == 0)
+            return "未获取到历史记录，请确认是否已登录。";
+
+        recentHistory.Clear();
+        string reply = "最近观看的视频：\n";
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            JObject item = (JObject)list[i];
+            string title = item["title"]?.ToString() ?? "未知标题";
+            JObject history = item["history"] as JObject;
+            string bvid = history?["bvid"]?.ToString();
+            long cid = (long?)history?["cid"] ?? 0;
+
+            if (!string.IsNullOrWhiteSpace(bvid) && cid > 0)
+            {
+                recentHistory.Add(new ValueTuple<string, long, string>(bvid, cid, title));
+                reply += $"{i + 1}. {title}\n";
+            }
+        }
+
+        reply += "\n使用 !bilibili h [编号] 播放对应视频。";
+        return reply;
+    }
+    catch (Exception ex)
+    {
+        return "获取历史记录失败：" + ex.Message;
+    }
+    }
+
+    [Command("bilibili h")]
+    public async Task<string> BilibiliHistoryPlay(InvokerData invoker, int index)
+    {
+    if (recentHistory == null || recentHistory.Count == 0)
+        return "历史记录为空，请先使用 !bilibili history 加载最近观看的视频。";
+
+    if (index < 1 || index > recentHistory.Count)
+        return $"请输入有效编号（1 - {recentHistory.Count}）。";
+
+    var (bvid, cid, title) = recentHistory[index - 1];
+    return await PlayAudio(cid, bvid, invoker);
     }
 
 

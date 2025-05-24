@@ -22,11 +22,13 @@
 
 ## 使用方法
 
-1.私聊机器人使用`!plugin load []`命令加载插件
+1.私聊机器人使用`!plugin load [插件编号]`命令加载插件，插件编号通过`!plugin lists`查询
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
 3.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录
+
+4.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录
 
 
 
