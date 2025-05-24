@@ -12,7 +12,7 @@
 
 3.下载并将[Newtonsoft.json.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll)放与TS3AudioBot根目录
 
-4.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h`权限
+4.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addh`权限
 
 
 
@@ -22,17 +22,17 @@
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
-如有多p会提示使用`!bilibili p [选项]`播放某一p
+*如有多p会提示使用`!bilibili p [选项]`播放某一p*
 
 3.使用`!bilibili add [BV号]`添加音频到下一个播放
 
-如有多p会提示使用`!bilibili addp [选项]`播放某一p
+*如有多p会提示使用`!bilibili addp [选项]`添加某一p到下一个播放*
 
 4.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录
 
 5.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录并可选播放某一视频的音频
 
-
+*如有多p会提示使用`!bilibili addh [选项]`添加某一p到下一个播放，或者使用!bilibili h [选项]直接播放*
 
 ## 编译源文件
 
