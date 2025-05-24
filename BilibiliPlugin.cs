@@ -180,6 +180,109 @@ public class BilibiliPlugin : IBotPlugin
         return await PlayAudio(cid, savedBvid, invoker);
     }
 
+    [Command("bilibili add")]
+    public async Task<string> BilibiliAddCommand(InvokerData invoker, string bvid)
+    {
+    if (string.IsNullOrWhiteSpace(bvid))
+        return "请提供 BV 号，例如：!bilibili add BV1xK4y1a7Yx";
+
+    try
+    {
+        string viewApi = $"https://api.bilibili.com/x/web-interface/view?bvid={bvid}";
+        string viewJson = await http.GetStringAsync(viewApi);
+        JObject viewData = JObject.Parse(viewJson)["data"] as JObject;
+
+        if (viewData == null)
+            return "未获取到视频信息，请检查 BV 号是否正确。";
+
+        JArray pages = viewData["pages"] as JArray;
+        savedBvid = (string)viewData["bvid"];
+        savedPages = pages;
+
+        if (pages != null && pages.Count > 1)
+        {
+            string reply = $"视频包含 {pages.Count} 个分P：\n";
+            for (int i = 0; i < pages.Count; i++)
+            {
+                reply += $"{i + 1}. {pages[i]["part"]}\n";
+            }
+
+            reply += "\n请使用命令 !bilibili addp [编号] 添加对应分P到播放队列。";
+            return reply;
+        }
+
+        // 无分P情况默认添加第一集
+        long cid = (long)viewData["cid"];
+        return await EnqueueAudio(cid, bvid, invoker);
+    }
+    catch (Exception ex)
+    {
+        return "获取视频信息时出错：" + ex.Message;
+    }
+    }
+    
+    [Command("bilibili addp")]
+    public async Task<string> BilibiliAddPart(InvokerData invoker, int partIndex)
+    {
+    if (savedPages == null || savedPages.Count == 0 || string.IsNullOrWhiteSpace(savedBvid))
+        return "请先使用 !bilibili add [BV号] 获取视频信息。";
+
+    if (partIndex < 1 || partIndex > savedPages.Count)
+        return $"请输入有效编号（1 - {savedPages.Count}）。";
+
+    JObject page = savedPages[partIndex - 1] as JObject;
+    long cid = (long)page["cid"];
+    return await EnqueueAudio(cid, savedBvid, invoker);
+    }
+
+    private async Task<string> EnqueueAudio(long cid, string bvid, InvokerData invoker)
+    {
+    try
+    {
+        string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
+        string playJson = await http.GetStringAsync(playApi);
+        JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
+
+        if (audioArray == null)
+            return "未能获取音频流地址，视频可能不支持 DASH 音频。";
+
+        JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
+        if (bestAudio == null)
+            return "未能获取有效的音频链接。";
+
+        var urlSources = new List<string>();
+        if (bestAudio["baseUrl"] != null) urlSources.Add(bestAudio["baseUrl"].ToString());
+        if (bestAudio["base_url"] != null) urlSources.Add(bestAudio["base_url"].ToString());
+
+        if (bestAudio["backupUrl"] is JArray backupUrls)
+            urlSources.AddRange(backupUrls.Select(u => u.ToString()));
+        if (bestAudio["backup_url"] is JArray backupUrls2)
+            urlSources.AddRange(backupUrls2.Select(u => u.ToString()));
+
+        foreach (var url in urlSources)
+        {
+            if (string.IsNullOrWhiteSpace(url)) continue;
+            try
+            {
+                await _playManager.Enqueue(invoker, url);
+                Console.WriteLine($"已加入队列：{url}");
+                return $"已将 B站 视频 {bvid} 的音频（cid={cid}）添加到播放队列。";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"添加到队列失败：{url}\n原因: {ex.Message}");
+            }
+        }
+
+        return "所有音频链接加入队列失败。";
+    }
+    catch (Exception ex)
+    {
+        return "加入队列失败：" + ex.Message;
+    }
+    }
+
+
     private async Task<string> PlayAudio(long cid, string bvid, InvokerData invoker)
     {
     try
@@ -214,7 +317,7 @@ public class BilibiliPlugin : IBotPlugin
             if (string.IsNullOrWhiteSpace(url)) continue;
             try
             {
-                await _playManager.Enqueue(invoker, url);
+                await _playManager.Play(invoker, url);
                 Console.WriteLine($"播放成功：{type} - {url}");
                 return $"正在播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
             }

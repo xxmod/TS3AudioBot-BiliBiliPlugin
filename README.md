@@ -22,9 +22,15 @@
 
 2.使用`!bilibili bv [BV号]`播放对应视频的音频
 
-3.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录
+如有多p会提示使用`!bilibili p [选项]`播放某一p
 
-4.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录
+3.使用`!bilibili add [BV号]`添加音频到下一个播放
+
+如有多p会提示使用`!bilibili addp [选项]`播放某一p
+
+4.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录
+
+5.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录并可选播放某一视频的音频
 
 
 
@@ -35,6 +41,14 @@
 2.clone[本库](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/archive/refs/heads/main.zip)
 
 3.运行release.bat
+
+
+
+## 感谢
+
+[`bilibili-API-collect`](https://github.com/SocialSisterYi/bilibili-API-collect)提供的bilibiliapi文档
+
+
 
 
 
