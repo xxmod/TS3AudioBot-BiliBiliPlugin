@@ -19,7 +19,8 @@ public class BilibiliPlugin : IBotPlugin
     private static string savedBvid = "";
     private static JArray savedPages;
     private static List<(string bvid, long cid, string title)> recentHistory = new List<(string bvid, long cid, string title)>();
-
+    private static JArray historyPages;
+    private static string historyBvid = "";
 
     public BilibiliPlugin(PlayManager playManager)
     {
@@ -145,9 +146,56 @@ public class BilibiliPlugin : IBotPlugin
             return $"请输入有效编号（1 - {recentHistory.Count}）。";
 
         var (bvid, cid, title) = recentHistory[index - 1];
-        return await PlayAudio(cid, bvid, invoker);
+
+        try
+        {
+            string viewApi = $"https://api.bilibili.com/x/web-interface/view?bvid={bvid}";
+            string viewJson = await http.GetStringAsync(viewApi);
+            JObject viewData = JObject.Parse(viewJson)["data"] as JObject;
+
+            if (viewData == null)
+                return "无法获取视频详细信息，可能已被删除或不可访问。";
+
+            JArray pages = viewData["pages"] as JArray;
+            historyBvid = (string)viewData["bvid"];
+            historyPages = pages;
+
+            if (pages != null && pages.Count > 1)
+            {
+                string reply = $"该视频包含 {pages.Count} 个分P：\n";
+                for (int i = 0; i < pages.Count; i++)
+                {
+                    reply += $"{i + 1}. {pages[i]["part"]}\n";
+                }
+
+                reply += "\n请使用 !bilibili hp [编号] 播放对应分P。";
+                return reply;
+            }
+
+            // 若只有一P则直接播放
+            long singleCid = (long)viewData["cid"];
+            return await PlayAudio(singleCid, bvid, invoker);
+        }
+        catch (Exception ex)
+        {
+            return "获取视频分P信息失败：" + ex.Message;
+        }
     }
 
+    [Command("bilibili hp")]
+    public async Task<string> BilibiliHistoryPlayPart(InvokerData invoker, int partIndex)
+    {
+        if (historyPages == null || historyPages.Count == 0 || string.IsNullOrWhiteSpace(historyBvid))
+            return "请先使用 !bilibili h [编号] 加载视频信息。";
+
+        if (partIndex < 1 || partIndex > historyPages.Count)
+            return $"请输入有效编号（1 - {historyPages.Count}）。";
+
+        JObject page = historyPages[partIndex - 1] as JObject;
+        long cid = (long)page["cid"];
+        return await PlayAudio(cid, historyBvid, invoker);
+    }
+    
     [Command("bilibili addh")]
     public async Task<string> BilibiliHistoryAdd(InvokerData invoker, int index)
     {

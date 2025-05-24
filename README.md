@@ -26,13 +26,13 @@
 
 3.使用`!bilibili add [BV号]`添加音频到下一个播放
 
-*如有多p会提示使用`!bilibili addp [选项]`添加某一p到下一个播放*
+*提示使用`!bilibili addp [选项]`添加某一p到下一个播放*
 
 4.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录，每个账号的cookie是独立的
 
 5.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录并可选播放某一视频的音频
 
-*如有多p会提示使用`!bilibili addh [选项]`添加某一p到下一个播放，或者使用!bilibili h [选项]直接播放*
+
 
 ## 编译源文件
 
