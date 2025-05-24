@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj": {}
+    "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj": {}
   },
   "projects": {
-    "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj": {
+    "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj",
+        "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj",
         "projectName": "BilibiliPlugin",
-        "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\BilibiliPlugin.csproj",
+        "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj",
         "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-        "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1 - 副本\\obj\\",
+        "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1u\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"
