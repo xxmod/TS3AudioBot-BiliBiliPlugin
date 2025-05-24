@@ -43,39 +43,63 @@ public class BilibiliPlugin : IBotPlugin
         }
     }
 
+    private string GetCookiePath(InvokerData invoker)
+    {
+        return $"bili_cookie_{invoker.ClientUid}.txt";
+    }
+
+    private void SetInvokerCookie(InvokerData invoker, HttpClient client)
+    {
+        string cookiePath = GetCookiePath(invoker);
+        if (File.Exists(cookiePath))
+        {
+            string cookie = File.ReadAllText(cookiePath);
+            if (!string.IsNullOrWhiteSpace(cookie))
+            {
+                client.DefaultRequestHeaders.Remove("Cookie");
+                client.DefaultRequestHeaders.Add("Cookie", cookie);
+            }
+        }
+    }
+
+
     [Command("bilibili login")]
     public async Task<string> BilibiliLogin(InvokerData invoker, string cookie)
-    {
+    {   
         if (string.IsNullOrWhiteSpace(cookie))
-            return "用法: !bilibili login [SESSDATA=xxx; bili_jct=xxx;...]";
+        return "用法: !bilibili login [SESSDATA=xxx; bili_jct=xxx; ...]";
 
-        // 保存并设置 Cookie
-        File.WriteAllText(cookieFile, cookie);
-        http.DefaultRequestHeaders.Remove("Cookie");
-        http.DefaultRequestHeaders.Add("Cookie", cookie);
+        string cookiePath = GetCookiePath(invoker);
+        File.WriteAllText(cookiePath, cookie);
 
         try
         {
-            string userJson = await http.GetStringAsync("https://api.bilibili.com/x/web-interface/nav");
+            // 使用新的 HttpClient（避免 Header 污染）
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Cookie", cookie);
+
+            string userJson = await client.GetStringAsync("https://api.bilibili.com/x/web-interface/nav");
             JObject userObj = JObject.Parse(userJson);
             string uname = userObj["data"]?["uname"]?.ToString();
 
             if (!string.IsNullOrEmpty(uname))
-                return $"登录成功，当前账号：{uname}";
+                return $"登录成功，账号绑定为：{uname}";
 
-            return "Cookie 已设置，但未能确认登录状态。请检查 Cookie 是否有效。";
+            return "Cookie 已设置，但未能确认登录状态，请检查 Cookie 是否有效。";
         }
         catch (Exception ex)
         {
-            return "登录状态确认失败：" + ex.Message;
+        return "登录状态确认失败：" + ex.Message;
         }
     }
+
 
     [Command("bilibili history")]
     public async Task<string> BilibiliHistory(InvokerData invoker)
     {
         try
         {
+            SetInvokerCookie(invoker, http);
             string url = "https://api.bilibili.com/x/web-interface/history/cursor?ps=10&type=archive";
             string json = await http.GetStringAsync(url);
             JObject data = JObject.Parse(json)["data"] as JObject;
