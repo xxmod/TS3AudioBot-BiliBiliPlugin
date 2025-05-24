@@ -12,7 +12,7 @@
 
 3.下载并将[Newtonsoft.json.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll)放与TS3AudioBot根目录
 
-4.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addh`权限
+4.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addp` `cmd.bilibili.addh`权限
 
 
 
