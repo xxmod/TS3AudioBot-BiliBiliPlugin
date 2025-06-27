@@ -295,11 +295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj",
+      "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\BilibiliPlugin.csproj",
       "projectName": "BilibiliPlugin",
-      "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1u\\BilibiliPlugin.csproj",
+      "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\BilibiliPlugin.csproj",
       "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-      "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1u\\obj\\",
+      "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -370,7 +370,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411\\RuntimeIdentifierGraph.json"
       }
     }
   },

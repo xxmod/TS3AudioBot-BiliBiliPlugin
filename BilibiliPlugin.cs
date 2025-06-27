@@ -25,6 +25,10 @@ public class BilibiliPlugin : IBotPlugin
     public BilibiliPlugin(PlayManager playManager)
     {
         _playManager = playManager;
+        http.DefaultRequestHeaders.Remove("Referer");
+        http.DefaultRequestHeaders.Add("Referer","https://www.bilibili.com");
+        http.DefaultRequestHeaders.Remove("User-Agent");
+        http.DefaultRequestHeaders.Add("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
         LoadCookie();
     }
 
@@ -149,6 +153,7 @@ public class BilibiliPlugin : IBotPlugin
 
         try
         {
+            http.DefaultRequestHeaders.Referrer = new Uri("https://www.bilibili.com");
             string viewApi = $"https://api.bilibili.com/x/web-interface/view?bvid={bvid}";
             string viewJson = await http.GetStringAsync(viewApi);
             JObject viewData = JObject.Parse(viewJson)["data"] as JObject;
@@ -214,7 +219,7 @@ public class BilibiliPlugin : IBotPlugin
     public async Task<string> BilibiliBvCommand(InvokerData invoker, string bvid)
     {
         if (string.IsNullOrWhiteSpace(bvid))
-            return "请提供 BV 号，例如：!bilibili bv BV1xK4y1a7Yx";
+            return "请提供 BV 号，例如：!bilibili bv BV1UT42167xb";
 
         try
         {
@@ -269,7 +274,7 @@ public class BilibiliPlugin : IBotPlugin
     public async Task<string> BilibiliAddCommand(InvokerData invoker, string bvid)
     {
         if (string.IsNullOrWhiteSpace(bvid))
-            return "请提供 BV 号，例如：!bilibili add BV1xK4y1a7Yx";
+            return "请提供 BV 号，例如：!bilibili add BV1UT42167xb";
 
         try
         {
@@ -322,103 +327,100 @@ public class BilibiliPlugin : IBotPlugin
 
     private async Task<string> EnqueueAudio(long cid, string bvid, InvokerData invoker)
     {
-        try
+    try
+    {
+        string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
+        string playJson = await http.GetStringAsync(playApi);
+        JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
+
+        if (audioArray == null)
+            return "未能获取音频流地址，视频可能不支持 DASH 音频。";
+
+        JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
+        if (bestAudio == null)
+            return "未能获取有效的音频链接。";
+
+        var urlSources = new List<string>();
+        if (bestAudio["baseUrl"] != null) urlSources.Add(bestAudio["baseUrl"].ToString());
+        if (bestAudio["base_url"] != null) urlSources.Add(bestAudio["base_url"].ToString());
+        if (bestAudio["backupUrl"] is JArray backupUrls)
+            urlSources.AddRange(backupUrls.Select(u => u.ToString()));
+        if (bestAudio["backup_url"] is JArray backupUrls2)
+            urlSources.AddRange(backupUrls2.Select(u => u.ToString()));
+
+        foreach (var url in urlSources)
         {
-            string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
-            string playJson = await http.GetStringAsync(playApi);
-            JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
-
-            if (audioArray == null)
-                return "未能获取音频流地址，视频可能不支持 DASH 音频。";
-
-            JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
-            if (bestAudio == null)
-                return "未能获取有效的音频链接。";
-
-            var urlSources = new List<string>();
-            if (bestAudio["baseUrl"] != null) urlSources.Add(bestAudio["baseUrl"].ToString());
-            if (bestAudio["base_url"] != null) urlSources.Add(bestAudio["base_url"].ToString());
-
-            if (bestAudio["backupUrl"] is JArray backupUrls)
-                urlSources.AddRange(backupUrls.Select(u => u.ToString()));
-            if (bestAudio["backup_url"] is JArray backupUrls2)
-                urlSources.AddRange(backupUrls2.Select(u => u.ToString()));
-
-            foreach (var url in urlSources)
+            if (string.IsNullOrWhiteSpace(url)) continue;
+            try
             {
-                if (string.IsNullOrWhiteSpace(url)) continue;
-                try
-                {
-                    await _playManager.Enqueue(invoker, url);
-                    Console.WriteLine($"已加入队列：{url}");
-                    return $"已将 B站 视频 {bvid} 的音频（cid={cid}）添加到播放队列。";
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"添加到队列失败：{url}\n原因: {ex.Message}");
-                }
+                string proxyUrl = $"http://localhost:32181/?{WebUtility.UrlEncode(url)}";
+                await _playManager.Enqueue(invoker, proxyUrl);
+                Console.WriteLine($"已通过代理加入队列：{proxyUrl}");
+                return $"已将 B站 视频 {bvid} 的音频（cid={cid}）添加到播放队列。";
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"添加到队列失败：{url}\n原因: {ex.Message}");
+            }
+        }
 
-            return "所有音频链接加入队列失败。";
-        }
-        catch (Exception ex)
-        {
-            return "加入队列失败：" + ex.Message;
-        }
+        return "所有音频链接加入队列失败。";
     }
+    catch (Exception ex)
+    {
+        return "加入队列失败：" + ex.Message;
+    }
+    }
+
 
 
     private async Task<string> PlayAudio(long cid, string bvid, InvokerData invoker)
     {
-        try
+    try
+    {
+        string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
+        string playJson = await http.GetStringAsync(playApi);
+        JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
+
+        if (audioArray == null)
+            return "未能获取音频流地址，视频可能不支持 DASH 音频。";
+
+        JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
+        if (bestAudio == null)
+            return "未能获取有效的音频链接。";
+
+        // 所有候选音频链接
+        var urlSources = new List<string>();
+        if (bestAudio["baseUrl"] != null) urlSources.Add(bestAudio["baseUrl"].ToString());
+        if (bestAudio["base_url"] != null) urlSources.Add(bestAudio["base_url"].ToString());
+        if (bestAudio["backupUrl"] is JArray backupUrls)
+            urlSources.AddRange(backupUrls.Select(u => u.ToString()));
+        if (bestAudio["backup_url"] is JArray backupUrls2)
+            urlSources.AddRange(backupUrls2.Select(u => u.ToString()));
+
+        // 使用本地代理进行播放
+        foreach (var url in urlSources)
         {
-            string playApi = $"https://api.bilibili.com/x/player/playurl?cid={cid}&bvid={bvid}&fnval=16&fourk=1";
-            string playJson = await http.GetStringAsync(playApi);
-            JArray audioArray = JObject.Parse(playJson)["data"]?["dash"]?["audio"] as JArray;
-
-            if (audioArray == null)
-                return "未能获取音频流地址，视频可能不支持 DASH 音频。";
-
-            JObject bestAudio = audioArray.OrderByDescending(a => (long)a["bandwidth"]).FirstOrDefault() as JObject;
-            if (bestAudio == null)
-                return "未能获取有效的音频链接。";
-
-        // 构建 URL 和来源名的列表
-            var urlSources = new List<(string Url, string Type)>
+            if (string.IsNullOrWhiteSpace(url)) continue;
+            try
             {
-                ((string)bestAudio["baseUrl"], "baseUrl"),
-                ((string)bestAudio["base_url"], "base_url")
-            };
-
-            if (bestAudio["backupUrl"] is JArray backupUrls)
-                urlSources.AddRange(backupUrls.Select(u => (u.ToString(), "backupUrl")));
-
-            if (bestAudio["backup_url"] is JArray backupUrls2)
-                urlSources.AddRange(backupUrls2.Select(u => (u.ToString(), "backup_url")));
-
-            // 依次尝试播放每个 URL
-            foreach (var (url, type) in urlSources)
-            {
-                if (string.IsNullOrWhiteSpace(url)) continue;
-                try
-                {
-                    await _playManager.Play(invoker, url);
-                    Console.WriteLine($"播放成功：{type} - {url}");
-                    return $"正在播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"播放失败：{type} - {url}\n原因: {ex.Message}");
-                    // 尝试下一个
-                }
+                string proxyUrl = $"http://localhost:32181/?{WebUtility.UrlEncode(url)}";
+                await _playManager.Play(invoker, proxyUrl);
+                Console.WriteLine($"播放成功：{proxyUrl}");
+                return $"正在通过代理播放 B站 视频 {bvid} 的音频（分P cid={cid}）。";
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"播放失败：{url}\n原因: {ex.Message}");
+            }
+        }
 
-            return "所有音频链接播放失败。";
-        }
-        catch (Exception ex)
-        {
-            return "播放失败：" + ex.Message;
-        }
+        return "所有音频链接播放失败。";
+    }
+    catch (Exception ex)
+    {
+        return "播放失败：" + ex.Message;
+    }
     }
 
 }

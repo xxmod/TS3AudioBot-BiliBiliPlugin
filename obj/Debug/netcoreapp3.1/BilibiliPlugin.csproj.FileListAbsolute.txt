@@ -1,0 +1,28 @@
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\BilibiliPlugin.deps.json
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\BilibiliPlugin.dll
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\BilibiliPlugin.pdb
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\TS3AudioBot.dll
+D:\TS3bilibili\BilibiliPlugin1u\bin\Debug\netcoreapp3.1\TSLib.dll
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\Bilibili.E73359D6.Up2Date
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.dll
+D:\TS3bilibili\BilibiliPlugin1u\obj\Debug\netcoreapp3.1\BilibiliPlugin.pdb
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\BilibiliPlugin.deps.json
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\BilibiliPlugin.dll
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\BilibiliPlugin.pdb
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\TS3AudioBot.dll
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\bin\Debug\netcoreapp3.1\TSLib.dll
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\Bilibili.E73359D6.Up2Date
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.dll
+D:\TS3bilibili\BilibiliPlugin1u - 副本 (2)\obj\Debug\netcoreapp3.1\BilibiliPlugin.pdb
