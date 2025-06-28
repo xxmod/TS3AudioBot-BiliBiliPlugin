@@ -295,11 +295,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\BilibiliPlugin.csproj",
+      "projectUniqueName": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
       "projectName": "BilibiliPlugin",
-      "projectPath": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\BilibiliPlugin.csproj",
+      "projectPath": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
       "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-      "outputPath": "D:\\TS3bilibili\\BilibiliPlugin1u - 副本 (2)\\obj\\",
+      "outputPath": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"

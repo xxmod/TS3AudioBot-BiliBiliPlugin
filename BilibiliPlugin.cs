@@ -67,6 +67,45 @@ public class BilibiliPlugin : IBotPlugin
         }
     }
 
+[Command("bilibili qr")]
+public async Task<string> BilibiliQrLogin(InvokerData invoker)
+{
+    try
+    {
+        // 1. 请求生成二维码的key
+        string keyUrl = "https://passport.bilibili.com/x/passport-login/web/qrcode/generate";
+        string keyResponse = await http.GetStringAsync(keyUrl);
+        JObject keyJson = JObject.Parse(keyResponse);
+
+
+        string qrKey = keyJson["data"]?["qrcode_key"]?.ToString();
+        string qrUrl = keyJson["data"]?["url"]?.ToString();
+
+        Console.WriteLine("Key Response: " + keyResponse + "\n qrUrl:" + qrUrl + "\n qrKey:" + qrKey);
+
+        if (string.IsNullOrEmpty(qrUrl))
+        {
+            return "获取二维码失败，请稍后再试，返回的Url为空。";
+        }
+
+        qrUrl = qrUrl.Replace(@"\u0026", "&");  // 解决\u0026替换问题
+
+        // 生成二维码
+        var qrCodeUrl = $"[URL]https://api.qrserver.com/v1/create-qr-code/?data={qrUrl}&size=300x300[/URL]";
+
+        //轮询
+        _ = CheckLoginStatusAsync(qrKey, invoker);
+        // 3. 返回二维码图片的URL或其他方式将二维码显示给用户
+        // 如果是发送二维码图片到 TS3AudioBot，可以将 qrCodeUrl 提供给用户
+        return $"请扫描二维码进行登录： {qrCodeUrl}";
+
+    }
+    catch (Exception ex)
+    {
+        return $"二维码登录失败：{ex.Message}";
+    }
+}
+
 
     [Command("bilibili login")]
     public async Task<string> BilibiliLogin(InvokerData invoker, string cookie)
@@ -421,6 +460,83 @@ public class BilibiliPlugin : IBotPlugin
     {
         return "播放失败：" + ex.Message;
     }
+    }
+
+    private async Task<string> CheckLoginStatusAsync(string qrKey, InvokerData invoker)
+    {
+        string checkLoginUrl = $"https://passport.bilibili.com/x/passport-login/web/qrcode/poll?qrcode_key={qrKey}";
+        string loginStatusResponse;
+        bool isLoggedIn = false;
+        int time = 0;
+
+        while (isLoggedIn == false)
+        {
+            loginStatusResponse = await http.GetStringAsync(checkLoginUrl);
+            JObject loginStatusJson = JObject.Parse(loginStatusResponse);
+            string statusCode = (string)loginStatusJson["data"]?["code"];
+
+            // 打印出登录状态响应
+            Console.WriteLine("Login Status Response: " + loginStatusResponse + "statuscode:" + statusCode);
+
+            // 登录成功，返回状态码 0
+            if (statusCode == "0")
+            {
+                string fullUrl = (string)loginStatusJson["data"]?["url"];
+                isLoggedIn = true;
+                string cookie;
+                cookie = ExtractCookieFromUrl(fullUrl);
+                if (string.IsNullOrWhiteSpace(cookie))
+                {
+                    return "登录成功，但无法获取Cookie信息。"; 
+                }
+
+                // 保存登录后的cookie信息
+                string cookiePath = GetCookiePath(invoker);
+                File.WriteAllText(cookiePath, cookie);
+                return "扫码登录成功！已将登录信息保存。"; 
+            }
+
+            if (statusCode == "86038")
+            {
+                return "登录失败，二维码已超时"; 
+            }
+
+            if (time >= 30)
+            {
+                return "登录失败，超时";
+            }
+
+            await Task.Delay(2000); // 每2秒检查一次
+            time++;
+        }
+        return "登录失败，请检查二维码是否已扫描并确认登录。";
+    }
+
+    private string ExtractCookieFromUrl(string fullUrl)
+    {
+    // fullUrl 格式：
+    // https://passport.biligame.com/crossDomain?DedeUserID=***\u0026DedeUserID__ckMd5=***\u0026Expires=***\u0026SESSDATA=***\u0026bili_jct=***\u0026gourl=https%3A%2F%2Fpassport.bilibili.com
+
+    try
+    {
+        Uri uri = new Uri(fullUrl);
+        var queryParams = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+        string sessData = queryParams["SESSDATA"];
+        string biliJct = queryParams["bili_jct"];
+
+        // 检查是否提取到了这两个参数，并返回 cookie 字符串
+        if (!string.IsNullOrEmpty(sessData) && !string.IsNullOrEmpty(biliJct))
+        {
+            return $"SESSDATA={sessData};bili_jct={biliJct};";
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Error extracting cookie from URL: " + ex.Message);
+    }
+
+    return null; // 如果解析失败，返回 null
     }
 
 }
