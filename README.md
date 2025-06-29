@@ -16,7 +16,7 @@
 
 4.下载并将[Newtonsoft.json.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll)放与TS3AudioBot根目录
 
-5.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addh`权限
+5.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addh` `cmd.bilibili.qr`权限
 
 6.配置好相关的服务器链接，用户权限等
 
@@ -51,6 +51,8 @@
 6.使用`!bilibili login SESSDATA=[SESSDATA]; bili_jct=[bili_jct]` 用cookie登录，每个账号的cookie是独立的
 
 7.在登录后可以使用,`!bilibili histroy`查看历史最近十条播放记录并可选播放某一视频的音频
+
+8.使用!bilibili qr 使用二维码登录
 
 
 
