@@ -6,6 +6,8 @@
 
 ## 安装方法
 
+#### 方法1
+
 1.进入以下链接下载并解压编译好的[插件](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll)
 
 2.下载并解压编译好的bilibili-referer-proxy[插件](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
@@ -17,6 +19,16 @@
 5.在right.toml中添加`cmd.bilibili` `cmd.bilibili.bv` `cmd.bilibili.p` `cmd.bilibili.login` `cmd.bilibili.history` `cmd.bilibili.h` `cmd.bilibili.add` `cmd.bilibili.addh`权限
 
 6.配置好相关的服务器链接，用户权限等
+
+#### 方法2
+
+1.进入release下载解压最新的release
+
+2.下载解压bilibili-referer-proxy[插件](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
+
+3.配置right.toml与bot文件夹
+
+4.使用
 
 
 
