@@ -69,7 +69,9 @@
 ## 感谢
 
 [`bilibili-API-collect`](https://github.com/SocialSisterYi/bilibili-API-collect)提供的bilibiliapi文档
+
 [`ZHANGTIANYAO1/TS3AudioBot-NetEaseCloudmusic-plugin`](https://github.com/ZHANGTIANYAO1/TS3AudioBot-NetEaseCloudmusic-plugin)提供代码案例
+
 [`Splamy/TS3AudioBot`](https://github.com/Splamy/TS3AudioBot)提供的文档和平台
 
 
