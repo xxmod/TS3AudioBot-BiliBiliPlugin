@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {}
+    "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {}
   },
   "projects": {
-    "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {
+    "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
+        "projectUniqueName": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
         "projectName": "BilibiliPlugin",
-        "projectPath": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
+        "projectPath": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
         "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-        "outputPath": "D:\\TS3bilibili\\TS3AudioBot-BiliBiliPlugin-main\\obj\\",
+        "outputPath": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"

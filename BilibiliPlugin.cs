@@ -31,7 +31,7 @@ public class BilibiliPlugin : IBotPlugin
 		http.DefaultRequestHeaders.Remove("User-Agent");
 		http.DefaultRequestHeaders.Add(
 			"User-Agent",
-			"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+			"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0"
 		);
 		LoadCookie();
 	}
@@ -149,10 +149,19 @@ public class BilibiliPlugin : IBotPlugin
 	{
 		try
 		{
-			SetInvokerCookie(invoker, http);
-			string url =
-				"https://api.bilibili.com/x/web-interface/history/cursor?ps=10&type=archive";
-			string json = await http.GetStringAsync(url);
+			// 新建HttpClient，避免全局Cookie污染
+			var client = new HttpClient();
+			string cookiePath = GetCookiePath(invoker);
+			if (File.Exists(cookiePath))
+			{
+				string cookie = File.ReadAllText(cookiePath);
+				if (!string.IsNullOrWhiteSpace(cookie))
+				{
+					client.DefaultRequestHeaders.Add("Cookie", cookie);
+				}
+			}
+			string url = "https://api.bilibili.com/x/web-interface/history/cursor?ps=10&type=archive";
+			string json = await client.GetStringAsync(url);
 			JObject data = JObject.Parse(json)["data"] as JObject;
 			JArray list = data?["list"] as JArray;
 
@@ -176,9 +185,7 @@ public class BilibiliPlugin : IBotPlugin
 					reply += $"{i + 1}. {title}\n";
 				}
 			}
-			http.DefaultRequestHeaders.Remove("Cookie");
-			reply +=
-				"\n使用 !bilibili h [编号] 播放对应视频。\n使用 !bilibili addh [编号] 添加到下一播放。";
+			reply += "\n使用 !bilibili h [编号] 播放对应视频。\n使用 !bilibili addh [编号] 添加到下一播放。";
 			return reply;
 		}
 		catch (Exception ex)
