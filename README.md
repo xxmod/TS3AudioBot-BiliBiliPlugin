@@ -2,7 +2,7 @@
 
 > 一个功能强大的 TS3AudioBot 插件，让您可以在 TeamSpeak 中直接播放 Bilibili 视频的音频内容。
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache-blue.svg)](LICENSE)
 [![.NET](https://img.shields.io/badge/.NET-3.1-blue.svg)](https://dotnet.microsoft.com/download/dotnet/3.1)
 
 ## ✨ 功能特性
@@ -288,7 +288,7 @@ A: 检查是否正确配置了权限，确保 `Newtonsoft.Json.dll` 在正确位
 
 ## 📄 许可证
 
-本项目基于 MIT 许可证开源，详见 [LICENSE](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/LICENSE) 文件。
+本项目基于 Apache 许可证开源，详见 [LICENSE](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/LICENSE) 文件。
 
 ## 🤝 贡献
 
@@ -297,3 +297,4 @@ A: 检查是否正确配置了权限，确保 `Newtonsoft.Json.dll` 在正确位
 ---
 
 **如果这个项目对您有帮助，请给个 ⭐ Star 支持一下！**
+
