@@ -1,0 +1,111 @@
+name: Auto Release
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.cs'
+      - '**.csproj'
+      - 'README.md'
+      - 'LICENSE'
+    # Trigger on source code, project, or documentation changes
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  release:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '3.1.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build Release
+      run: dotnet build --configuration Release --no-restore
+    
+    - name: Get current date
+      id: date
+      run: echo "DATE=$(Get-Date -Format 'yyyy.MM.dd.HHmm')" >> $env:GITHUB_OUTPUT
+    
+    - name: Get commit message
+      id: commit
+      run: |
+        $commitMessage = git log -1 --pretty=format:"%B"
+        $commitMessage = $commitMessage -replace "`n", "%0A" -replace "`r", ""
+        echo "MESSAGE=$commitMessage" >> $env:GITHUB_OUTPUT
+    
+    - name: Create release directory
+      run: mkdir release-files
+    
+    - name: Copy release files
+      run: |
+        if (Test-Path "bin/Release/netcoreapp3.1/BilibiliPlugin.dll") {
+          Copy-Item "bin/Release/netcoreapp3.1/BilibiliPlugin.dll" -Destination "release-files/"
+        } else {
+          Write-Error "BilibiliPlugin.dll not found in build output!"
+          exit 1
+        }
+        if (Test-Path "bin/Release/netcoreapp3.1/Newtonsoft.Json.dll") {
+          Copy-Item "bin/Release/netcoreapp3.1/Newtonsoft.Json.dll" -Destination "release-files/"
+        } else {
+          Write-Error "Newtonsoft.Json.dll not found in build output!"
+          exit 1
+        }
+        Copy-Item "README.md" -Destination "release-files/"
+        Copy-Item "LICENSE" -Destination "release-files/"
+    
+    - name: Create Release Archive
+      run: |
+        Compress-Archive -Path "release-files/*" -DestinationPath "BilibiliPlugin-v${{ steps.date.outputs.DATE }}.zip"
+    
+    - name: Create TS3AudioBot distribution
+      run: |
+        # Create distribution directory
+        mkdir ts3audiobot-dist
+        
+        # Copy all files from ts3audiobot/ folder to distribution
+        if (Test-Path "ts3audiobot") {
+          Copy-Item "ts3audiobot/*" -Destination "ts3audiobot-dist/" -Recurse -Force
+        } else {
+          Write-Error "ts3audiobot folder not found!"
+          exit 1
+        }
+        
+        # Copy the built plugin to the plugins folder
+        if (Test-Path "ts3audiobot-dist/plugins") {
+          Copy-Item "bin/Release/netcoreapp3.1/BilibiliPlugin.dll" -Destination "ts3audiobot-dist/plugins/" -Force
+        } else {
+          Write-Error "plugins folder not found in ts3audiobot directory!"
+          exit 1
+        }
+    
+    - name: Create TS3AudioBot distribution archive
+      run: |
+        Compress-Archive -Path "ts3audiobot-dist/*" -DestinationPath "PluginWithTS3bot-${{ steps.date.outputs.DATE }}-amd64-windows.zip"
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.date.outputs.DATE }}
+        name: Bilibili Plugin Release v${{ steps.date.outputs.DATE }}
+        body: |
+          ## 🎵 TS3AudioBot Bilibili Plugin Release
+          ###### 此版本使用Actions Workflow打包生成
+          
+          ### 更新内容
+          ${{ steps.commit.outputs.MESSAGE }}
+           
+        draft: false
+        prerelease: false
+        files: |
+          BilibiliPlugin-v${{ steps.date.outputs.DATE }}.zip
+          PluginWithTS3bot-${{ steps.date.outputs.DATE }}-amd64-windows.zip
