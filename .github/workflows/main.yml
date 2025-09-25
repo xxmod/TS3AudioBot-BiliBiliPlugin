@@ -6,7 +6,6 @@ on:
     paths:
       - '**.cs'
       - '**.csproj'
-      - 'README.md'
       - 'LICENSE'
     # Trigger on source code, project, or documentation changes
   workflow_dispatch:
