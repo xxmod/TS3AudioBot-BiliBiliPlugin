@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {}
+    "/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/BilibiliPlugin.csproj": {}
   },
   "projects": {
-    "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj": {
+    "/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/BilibiliPlugin.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
+        "projectUniqueName": "/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/BilibiliPlugin.csproj",
         "projectName": "BilibiliPlugin",
-        "projectPath": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\BilibiliPlugin.csproj",
-        "packagesPath": "C:\\Users\\30370\\.nuget\\packages\\",
-        "outputPath": "D:\\TS3bilibili\\傻逼版本管理\\TS3AudioBot-BiliBiliPlugin-main\\obj\\",
+        "projectPath": "/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/BilibiliPlugin.csproj",
+        "packagesPath": "/home/runner/.nuget/packages/",
+        "outputPath": "/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\30370\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/runner/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "netcoreapp3.1": {
@@ -71,10 +72,6 @@
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
             }
           ],
           "frameworkReferences": {
@@ -82,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.305/RuntimeIdentifierGraph.json"
         }
       }
     }

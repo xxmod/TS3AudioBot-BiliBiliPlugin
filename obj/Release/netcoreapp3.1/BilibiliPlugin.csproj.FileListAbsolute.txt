@@ -1,56 +1,71 @@
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\BilibiliPlugin.deps.json
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\TS3AudioBot.dll
-D:\TS3bilibili\BilibiliPlugin1 - 副本\bin\Release\netcoreapp3.1\TSLib.dll
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\Bilibili.E73359D6.Up2Date
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\BilibiliPlugin1 - 副本\obj\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\BilibiliPlugin.deps.json
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\TS3AudioBot.dll
-D:\TS3bilibili\BilibiliPlugin1u\bin\Release\netcoreapp3.1\TSLib.dll
-D:\TS3bilibili\BilibiliPlugin1u\obj\Release\netcoreapp3.1\Bilibili.E73359D6.Up2Date
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.deps.json
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\TS3AudioBot.dll
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\TSLib.dll
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\Bilibili.E73359D6.Up2Date
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.deps.json
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\BilibiliPlugin.pdb
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\TS3AudioBot.dll
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\bin\Release\netcoreapp3.1\TSLib.dll
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.AssemblyReference.cache
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfoInputs.cache
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.AssemblyInfo.cs
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.csproj.CoreCompileInputs.cache
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\Bilibili.E73359D6.Up2Date
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.dll
-D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\obj\Release\netcoreapp3.1\BilibiliPlugin.pdb
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.AssemblyReference.cache
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfoInputs.cache
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfo.cs
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/BilibiliPlugin.deps.json
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/TS3AudioBot.dll
+D:/TS3bilibili/BilibiliPlugin1 - 副本/bin/Release/netcoreapp3.1/TSLib.dll
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/Bilibili.E73359D6.Up2Date
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/BilibiliPlugin1 - 副本/obj/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.AssemblyReference.cache
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfoInputs.cache
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfo.cs
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/BilibiliPlugin.deps.json
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/TS3AudioBot.dll
+D:/TS3bilibili/BilibiliPlugin1u/bin/Release/netcoreapp3.1/TSLib.dll
+D:/TS3bilibili/BilibiliPlugin1u/obj/Release/netcoreapp3.1/Bilibili.E73359D6.Up2Date
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.deps.json
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/TS3AudioBot.dll
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/TSLib.dll
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.AssemblyReference.cache
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfoInputs.cache
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfo.cs
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/Bilibili.E73359D6.Up2Date
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.deps.json
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/BilibiliPlugin.pdb
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/TS3AudioBot.dll
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/bin/Release/netcoreapp3.1/TSLib.dll
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.AssemblyReference.cache
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfoInputs.cache
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfo.cs
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.CoreCompileInputs.cache
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/Bilibili.E73359D6.Up2Date
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.dll
+D:/TS3bilibili/傻逼版本管理/TS3AudioBot-BiliBiliPlugin-main/obj/Release/netcoreapp3.1/BilibiliPlugin.pdb
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/BilibiliPlugin.deps.json
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/BilibiliPlugin.dll
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/BilibiliPlugin.pdb
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/TS3AudioBot.dll
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/bin/Release/netcoreapp3.1/TSLib.dll
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.AssemblyReference.cache
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfoInputs.cache
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.AssemblyInfo.cs
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.csproj.CoreCompileInputs.cache
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.sourcelink.json
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/Bilibili.E73359D6.Up2Date
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.dll
+/home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/obj/Release/netcoreapp3.1/BilibiliPlugin.pdb

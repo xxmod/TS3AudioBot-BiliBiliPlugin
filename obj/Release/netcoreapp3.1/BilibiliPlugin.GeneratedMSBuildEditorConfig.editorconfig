@@ -1,5 +1,8 @@
 is_global = true
 build_property.RootNamespace = BilibiliPlugin
-build_property.ProjectDir = D:\TS3bilibili\傻逼版本管理\TS3AudioBot-BiliBiliPlugin-main\
+build_property.ProjectDir = /home/runner/work/TS3AudioBot-BiliBiliPlugin/TS3AudioBot-BiliBiliPlugin/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 
