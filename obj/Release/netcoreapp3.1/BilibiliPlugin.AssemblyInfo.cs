@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BilibiliPlugin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0389af814a19cebf71746d6f8fa6d444857bb86")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1f53a359cd283c3649cca624dc771cde6662ced")]
 [assembly: System.Reflection.AssemblyProductAttribute("BilibiliPlugin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BilibiliPlugin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
