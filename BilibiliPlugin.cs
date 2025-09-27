@@ -18,12 +18,26 @@ using System.Reflection;
 
 public class BilibiliPlugin : IBotPlugin
 {
+    #region 模式管理
+
+    // 机器人信息设置模式枚举
+    public enum BotInfoMode
+    {
+        Name = 1,        // 设置机器人名字
+        Description = 2  // 设置机器人简介
+    }
+    
+    //默认为设置名字模式
+    private static BotInfoMode currentBotInfoMode = BotInfoMode.Name;
+    
+    #endregion
+    
     private Ts3Client _ts3Client;
     private readonly PlayManager _playManager;
 	private static readonly HttpClient http = new HttpClient();
 	private static string cookieFile = "bili_cookie.txt";
 
-
+    private const string DEFAULT_PROXY_URL = "http://localhost:32181/"; //修改默认代理地址（注意末尾的斜杠）
 
     private static BilibiliVideoInfo lastSearchedVideo;
     private static List<BilibiliVideoInfo> lastHistoryResult;
@@ -211,7 +225,7 @@ public class BilibiliPlugin : IBotPlugin
                     continue;
                 try
                 {
-                    string proxyUrl = $"http://localhost:32181/?{WebUtility.UrlEncode(url)}";
+                    string proxyUrl = $"{DEFAULT_PROXY_URL}?{WebUtility.UrlEncode(url)}";
                     await _playManager.Enqueue(invoker, proxyUrl);
                     
                     if (announce)
@@ -256,17 +270,17 @@ public class BilibiliPlugin : IBotPlugin
                     continue;
                 try
                 {
-                    string proxyUrl = $"http://localhost:32181/?{WebUtility.UrlEncode(url)}";
+                    string proxyUrl = $"{DEFAULT_PROXY_URL}?{WebUtility.UrlEncode(url)}";
 
                     await SetAvatarAsync(videoInfo.CoverUrl);
-                    await SetBotNameAsync(videoInfo.Title);
+                    await SetBotInfoAsync(videoInfo.Title);
                     await _playManager.Play(invoker, proxyUrl);
                     Console.WriteLine($"{videoInfo.Title}播放成功：{proxyUrl}");
                     string qualityTag = streamInfo.IsHiRes ? " (Hi-Res)" : "";
                     
                     string partTag = (!string.IsNullOrWhiteSpace(partInfo.Title))? $"（{partInfo.Index}P：{partInfo.Title}）" : "";
                     string partJump = (!string.IsNullOrWhiteSpace(partInfo.Title)) ? $"/?p={partInfo.Index}" : "";   
-                    await _ts3Client.SendChannelMessage($"正在播放{qualityTag}：{videoInfo.Uploader} 投稿的《{videoInfo.Title}》{partTag}{System.Environment.NewLine}链接：https://www.bilibili.com/video/{videoInfo.Bvid}{partJump}");
+                    await _ts3Client.SendChannelMessage($"正在播放{qualityTag}：{videoInfo.Uploader} 投稿的《{videoInfo.Title}》{partTag}{System.Environment.NewLine}链接：[URL]https://www.bilibili.com/video/{videoInfo.Bvid}{partJump}[/URL]");
                     return null;
                     //  return $"正在播放{qualityTag}：{videoInfo.Uploader} 投稿的《{videoInfo.Title}》{partTag}{System.Environment.NewLine}链接：https://www.bilibili.com/video/{videoInfo.Bvid}";
                 }
@@ -415,6 +429,40 @@ public class BilibiliPlugin : IBotPlugin
         {
             // 4. 失败时，返回错误信息
             return $"错误：修改机器人名称失败。原因: {ex.Message}";
+        }
+    }
+    
+    private async Task<string> SetBotDescriptionAsync(string title)
+    {
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            return "标题为空，无法设置机器人简介。";
+        }
+
+        try
+        {
+            // 设置机器人简介
+            string description = title.Length > 50 ? title.Substring(0, 47) + "..." : title;
+
+            await _ts3Client.ChangeDescription(description);
+            return null;
+        }
+        catch (Exception ex)
+        {
+            return $"错误：修改机器人简介失败。原因: {ex.Message}";
+        }
+    }
+    
+    private async Task<string> SetBotInfoAsync(string title)
+    {
+        switch (currentBotInfoMode)
+        {
+            case BotInfoMode.Name:
+                return await SetBotNameAsync(title);
+            case BotInfoMode.Description:
+                return await SetBotDescriptionAsync(title);
+            default:
+                return await SetBotNameAsync(title); // 默认设置名字
         }
     }
     private async Task<AudioStreamInfo> GetAudioStreamInfoAsync(BilibiliVideoInfo videoInfo, VideoPartInfo partInfo, InvokerData invoker)
@@ -732,8 +780,28 @@ public class BilibiliPlugin : IBotPlugin
 
 #region ok的
     [Command("bilibili status")]
-    public async Task<string> BilibiliStatus(InvokerData invoker)
+    public async Task<string> BilibiliStatus(InvokerData invoker, string mode = null)
     {
+        // 处理模式切换参数
+        if (!string.IsNullOrEmpty(mode))
+        {
+            if (mode == "1")
+            {
+                currentBotInfoMode = BotInfoMode.Name;
+                return "已切换到模式1：播放时自动设置机器人名字";
+            }
+            else if (mode == "2")
+            {
+                currentBotInfoMode = BotInfoMode.Description;
+                return "已切换到模式2：播放时自动设置机器人简介";
+            }
+            else
+            {
+                return "无效的模式参数。使用 1 设置名字模式，使用 2 设置简介模式。";
+            }
+        }
+
+        // 原有的状态检查逻辑
         // 准备一个临时的 HttpClient 来发送请求
         var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Referer", "https://www.bilibili.com");
@@ -750,8 +818,8 @@ public class BilibiliPlugin : IBotPlugin
             // 尝试快速连接代理来检查其状态
             using (var proxyClient = new HttpClient { Timeout = TimeSpan.FromSeconds(2) })
             {
-                var response = await proxyClient.GetAsync("http://localhost:32181/");
-                proxyStatus = "http://localhost:32181/ (运行中)";
+                var response = await proxyClient.GetAsync(DEFAULT_PROXY_URL);
+                proxyStatus = $"[URL]{DEFAULT_PROXY_URL}[/URL] (运行中)";
             }
         }
 
@@ -770,6 +838,12 @@ public class BilibiliPlugin : IBotPlugin
             reply.AppendLine("B站登录状态");
             reply.AppendLine();
             reply.AppendLine($"代理接口：{proxyStatus}");
+            
+            // 添加当前模式显示
+            string currentModeText = currentBotInfoMode == BotInfoMode.Name ? "名字模式" : "简介模式";
+            reply.AppendLine($"当前模式：{currentModeText} (使用 !bilibili status 1/2 切换)");
+            reply.AppendLine();
+            
             bool isLogin = false;
             
             JObject data = null;
@@ -788,7 +862,7 @@ public class BilibiliPlugin : IBotPlugin
                 string vipLabel = data["vip_label"]?["text"]?.ToString();
                 long vipDueDateUnix = (long?)data["vipDueDate"] ?? 0;
 
-                reply.Append($"当前用户：{uname} [https://space.bilibili.com/{mid}]");
+                reply.Append($"当前用户：{uname} [URL]https://space.bilibili.com/{mid}[/URL]");
 
                 if (!string.IsNullOrEmpty(vipLabel))
                 {
