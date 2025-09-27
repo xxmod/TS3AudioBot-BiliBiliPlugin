@@ -1,23 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AssemblyName>BilibiliPlugin</AssemblyName>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<Version>1.1.7</Version>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AssemblyName>BilibiliPlugin</AssemblyName>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="TS3AudioBot">
-      <HintPath>.\TS3AudioBot.dll</HintPath>
-    </Reference>
-    <Reference Include="TSLib">
-      <HintPath>.\TSLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<AssemblyVersion>1.1.*</AssemblyVersion>
+		<Deterministic>false</Deterministic>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<AssemblyVersion>$(Version).7</AssemblyVersion>
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Reference Include="TS3AudioBot">
+			<HintPath>.\TS3AudioBot.dll</HintPath>
+		</Reference>
+		<Reference Include="TSLib">
+			<HintPath>.\TSLib.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="SixLabors.ImageSharp" Version="2.1.11" />
+		<PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+		<PackageReference Include="Costura.Fody" Version="5.7.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>all</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Fody" Version="6.5.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>all</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
 </Project>

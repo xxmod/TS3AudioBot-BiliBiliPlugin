@@ -51,12 +51,6 @@ jobs:
           Write-Error "BilibiliPlugin.dll not found in build output!"
           exit 1
         }
-        if (Test-Path "bin/Release/netcoreapp3.1/Newtonsoft.Json.dll") {
-          Copy-Item "bin/Release/netcoreapp3.1/Newtonsoft.Json.dll" -Destination "release-files/"
-        } else {
-          Write-Error "Newtonsoft.Json.dll not found in build output!"
-          exit 1
-        }
         Copy-Item "README.md" -Destination "release-files/"
         Copy-Item "LICENSE" -Destination "release-files/"
     
