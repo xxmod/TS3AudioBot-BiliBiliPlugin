@@ -530,7 +530,7 @@ public class BilibiliPlugin : IBotPlugin
                         {
                             reply += $"{part.Index}. {part.Title}\n";
                         }
-                        reply += $"\n请使用命令 !b vp [编号] 或 !b addp [编号] 重新选择。";
+                        reply += $"\n请使用命令 !bilibili p [编号] 或 !bilibili addp [编号] 重新选择。";
                         return reply;
                     }
                 }
@@ -546,7 +546,7 @@ public class BilibiliPlugin : IBotPlugin
                     {
                         reply += $"{part.Index}. {part.Title}\n";
                     }
-                    reply += "\n请使用命令 !b vp [编号] 播放对应分P，或使用 !b addp [编号] 添加到队列。";
+                    reply += "\n请使用命令 !bilibili p [编号] 播放对应分P，或使用 !bilibili addp [编号] 添加到队列。";
                     return reply;
                 }
                 else
@@ -731,7 +731,7 @@ public class BilibiliPlugin : IBotPlugin
     //---------------------------------------------------------------指令块---------------------------------------------------------------//
 
 #region ok的
-    [Command("b status")]
+    [Command("bilibili status")]
     public async Task<string> BilibiliStatus(InvokerData invoker)
     {
         // 准备一个临时的 HttpClient 来发送请求
@@ -816,7 +816,7 @@ public class BilibiliPlugin : IBotPlugin
         }
     }
 
-    [Command("b qr")]
+    [Command("bilibili qr")]
 	public async Task<string> BilibiliQrLogin(InvokerData invoker)
 	{
 		try
@@ -856,11 +856,11 @@ public class BilibiliPlugin : IBotPlugin
 		}
 	}
 
-	[Command("b login")]
+	[Command("bilibili login")]
 	public async Task<string> BilibiliLogin(InvokerData invoker, string cookie)
 	{
 		if (string.IsNullOrWhiteSpace(cookie))
-			return "用法: !b login [SESSDATA=xxx; bili_jct=xxx; ...]";
+			return "用法: !bilibili login [SESSDATA=xxx; bili_jct=xxx; ...]";
 
 		string cookiePath = GetCookiePath(invoker);
 		File.WriteAllText(cookiePath, cookie);
@@ -888,7 +888,7 @@ public class BilibiliPlugin : IBotPlugin
 		}
 	}   
 
-    [Command("b history")]
+    [Command("bilibili history")]
 	public async Task<string> BilibiliHistory(InvokerData invoker)
 	{
 		try
@@ -961,7 +961,7 @@ public class BilibiliPlugin : IBotPlugin
                     reply += $"{lastHistoryResult.Count}. {displayTitle}\n";
                 }
             }
-            reply += "\n使用 !b h [编号] 播放对应视频。\n使用 !b addh [编号] 添加到下一播放。";
+            reply += "\n使用 !bilibili h [编号] 播放对应视频。\n使用 !bilibili addh [编号] 添加到下一播放。";
             return reply;
             
         }
@@ -971,12 +971,12 @@ public class BilibiliPlugin : IBotPlugin
 		}
 	}
 
-	[Command("b h")]
+	[Command("bilibili h")]
 	public async Task<string> BilibiliHistoryPlay(InvokerData invoker, int index)
 	{
         
         if (lastHistoryResult == null || lastHistoryResult.Count == 0)
-                return "历史记录为空，请先使用 !b history 加载最近观看的视频。";
+                return "历史记录为空，请先使用 !bilibili history 加载最近观看的视频。";
 
             if (index < 1 || index > lastHistoryResult.Count)
                 return $"请输入有效编号（1 - {lastHistoryResult.Count}）。";
@@ -990,11 +990,11 @@ public class BilibiliPlugin : IBotPlugin
             return await PlayAudio(videoToPlay, partToPlay, invoker);
   	}
 
-	[Command("b addh")]
+	[Command("bilibili addh")]
 	public async Task<string> BilibiliHistoryAdd(InvokerData invoker, int index)
 	{
         if (lastHistoryResult == null || lastHistoryResult.Count == 0)
-            return "历史记录为空，请先使用 !b history 加载最近观看的视频。";
+            return "历史记录为空，请先使用 !bilibili history 加载最近观看的视频。";
 
         if (index < 1 || index > lastHistoryResult.Count)
             return $"请输入有效编号（1 - {lastHistoryResult.Count}）。";
@@ -1008,11 +1008,11 @@ public class BilibiliPlugin : IBotPlugin
 
     #endregion
 
-    [Command("b v")]
+    [Command("bilibili bv")]
     public async Task<string> BilibiliBvCommand(InvokerData invoker, string input)
     {
         if (string.IsNullOrWhiteSpace(input))
-            return "请提供 BV 号，例如：!b v BV1UT42167xb 或 !b v BV1UT42167xb-3";
+            return "请提供 BV 号，例如：!bilibili bv BV1UT42167xb 或 !bilibili bv BV1UT42167xb-3";
 
         // 检查是否为播放全部分P的指令
         if (input.EndsWith("-a", StringComparison.OrdinalIgnoreCase))
@@ -1045,11 +1045,11 @@ public class BilibiliPlugin : IBotPlugin
         }
     }
 
-    [Command("b vp")]
+    [Command("bilibili p")]
 	public async Task<string> BilibiliPlayPart(InvokerData invoker, int partIndex)
 	{
         if (lastSearchedVideo == null)
-            return "请先使用 !b v [BV号] 获取视频信息。";
+            return "请先使用 !bilibili bv [BV号] 获取视频信息。";
 
         var partToPlay = lastSearchedVideo.Parts.FirstOrDefault(p => p.Index == partIndex);
         if (partToPlay == null)
@@ -1058,11 +1058,11 @@ public class BilibiliPlugin : IBotPlugin
         return await PlayAudio(lastSearchedVideo, partToPlay, invoker);
     }
 
-    [Command("b vall")]
+    [Command("bilibili bvall")]
     public async Task<string> BilibiliPlayAllCommand(InvokerData invoker, string bvid)
     {
         if (string.IsNullOrWhiteSpace(bvid))
-            return "请提供 BV 号。用法: !b vall [BV号]";
+            return "请提供 BV 号。用法: !bilibili bvall [BV号]";
 
         try
         {
@@ -1087,11 +1087,11 @@ public class BilibiliPlugin : IBotPlugin
         }
     }
 
-    [Command("b add")]
+    [Command("bilibili add")]
     public async Task<string> BilibiliAddCommand(InvokerData invoker, string input)
     {
         if (string.IsNullOrWhiteSpace(input))
-            return "请提供 BV 号，例如：!b add BV1UT42167xb 或 !b add BV1UT42167xb-3";
+            return "请提供 BV 号，例如：!bilibili add BV1UT42167xb 或 !bilibili add BV1UT42167xb-3";
 
         if (input.EndsWith("-a", StringComparison.OrdinalIgnoreCase))
         {
@@ -1122,11 +1122,11 @@ public class BilibiliPlugin : IBotPlugin
             return await HandleVideoRequest(invoker, input, (videoInfo, partInfo, invData) => EnqueueAudio(videoInfo, partInfo, invData));
         }
     }
-    [Command("b addp")]
+    [Command("bilibili addp")]
 	public async Task<string> BilibiliAddPart(InvokerData invoker, int partIndex)
 	{
         if (lastSearchedVideo == null)
-            return "请先使用 !b add [BV号] 获取视频信息。";
+            return "请先使用 !bilibili add [BV号] 获取视频信息。";
 
         var partToAdd = lastSearchedVideo.Parts.FirstOrDefault(p => p.Index == partIndex);
         if (partToAdd == null)
@@ -1135,11 +1135,11 @@ public class BilibiliPlugin : IBotPlugin
         return await EnqueueAudio(lastSearchedVideo, partToAdd, invoker);
     }
 
-    [Command("b addall")]
+    [Command("bilibili addall")]
     public async Task<string> BilibiliAddAllCommand(InvokerData invoker, string bvid)
     {
         if (string.IsNullOrWhiteSpace(bvid))
-            return "请提供 BV 号。用法: !b addall [BV号]";
+            return "请提供 BV 号。用法: !bilibili addall [BV号]";
 
         try
         {

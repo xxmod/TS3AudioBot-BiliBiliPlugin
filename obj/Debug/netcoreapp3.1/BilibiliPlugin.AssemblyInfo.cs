@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("BilibiliPlugin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.2.*")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.9+5952aaa596bbe5bbc422b1d3daa4c298845698cf")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.*")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.7+6f4ada340c944fa70c0111705f9c968c23d1912e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BilibiliPlugin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BilibiliPlugin")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.2.*")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.*")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 
