@@ -2,9 +2,9 @@
 
 > 一个功能强大的 TS3AudioBot 插件，让您可以在 TeamSpeak 中直接播放 Bilibili 视频的音频内容。
 
-[!\[Auto Release](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/actions/workflows/main.yml/badge.svg)](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/actions/workflows/main.yml)
-[!\[License](https://img.shields.io/badge/license-MPL2.0-blue.svg)](LICENSE)
-[!\[.NET](https://img.shields.io/badge/.NET-3.1-blue.svg)](https://dotnet.microsoft.com/download/dotnet/3.1)
+[![Auto Release](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/actions/workflows/main.yml/badge.svg)](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/actions/workflows/main.yml)
+[![License](https://img.shields.io/badge/license-MPL2.0-blue.svg)](LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-3.1-blue.svg)](https://dotnet.microsoft.com/download/dotnet/3.1)
 
 ## ✨ 功能特性
 
@@ -312,3 +312,4 @@ A: 确保先使用 `!bilibili bv` 命令获取视频信息，再使用 `!bilibil
 ---
 
 **如果这个项目对您有帮助，请给个 ⭐ Star 支持一下！**
+
