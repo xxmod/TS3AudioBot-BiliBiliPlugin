@@ -22,14 +22,12 @@
 1. **下载插件文件**
 
    - 下载 [BilibiliPlugin.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll)
-   - 下载 [Newtonsoft.Json.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/raw/refs/heads/main/bin/Release/netcoreapp3.1/Newtonsoft.Json.dll)
 2. **下载代理服务**
 
    - 下载 [bilibili-referer-proxy](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
 3. **文件部署**
 
    - 将 `BilibiliPlugin.dll` 放置于 `TS3AudioBot/Plugins/` 目录下
-   - 将 `Newtonsoft.Json.dll` 放置于 `TS3AudioBot` 根目录
    - 解压代理服务到任意目录
 4. **权限配置**
    在 `rights.toml` 中添加以下权限：
@@ -225,7 +223,6 @@
 ### 环境要求
 
 - [.NET Core 3.1 SDK](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-3.1.426-windows-x64-installer)
-- Visual Studio 2019+ 或 VS Code
 
 ### 编译步骤
 
@@ -260,8 +257,6 @@ A: 确认 Cookie 信息正确，可尝试重新登录或使用二维码登录。
 **Q: 多P视频无法播放指定分P**
 A: 确保先使用 `!bilibili bv` 命令获取视频信息，再使用 `!bilibili p` 命令。
 
-**Q: 插件加载失败**
-A: 检查是否正确配置了权限，确保 `Newtonsoft.Json.dll` 在正确位置。
 
 ### 获取 Cookie 方法
 
@@ -298,6 +293,7 @@ A: 检查是否正确配置了权限，确保 `Newtonsoft.Json.dll` 在正确位
 ---
 
 **如果这个项目对您有帮助，请给个 ⭐ Star 支持一下！**
+
 
 
 
