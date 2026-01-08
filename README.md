@@ -17,21 +17,13 @@
 
 ## 📦 安装方法
 
-### 方法一：快速安装（推荐）
+### Release 包安装
 
-1. **下载插件文件**
-
-
-   * 下载 [BilibiliPlugin.dll](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/blob/main/bin/Release/netcoreapp3.1/BilibiliPlugin.dll)
-2. **下载代理服务**
-
-   * 下载 [bilibili-referer-proxy](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
-3. **文件部署**
-
-   - 将 `BilibiliPlugin.dll` 放置于 `TS3AudioBot/Plugins/` 目录下
-
-4. **权限配置**
-   在 `rights.toml` 中添加以下权限：&nbsp;
+1. 前往 [Releases](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/releases) 下载最新版本
+2. 到[1.1.5.1](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/releases) 下载TS3audioBot（第一次操作需要）
+3. 解压，并将最新版本替换1.1.5.1的插件（插件目录在`/plugin`中）
+4. 下载并解压 [bilibili-referer-proxy](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
+5. 在 `rights.toml` 中添加以下权限：&nbsp;
 
 ```
    "cmd.bilibili"
@@ -47,11 +39,6 @@
    "cmd.bilibili.addp"
 ```
 
-### 方法二：Release 包安装
-
-1. 前往 [Releases](https://github.com/xxmod/TS3AudioBot-BiliBiliPlugin/releases) 下载最新版本
-2. 下载并解压 [bilibili-referer-proxy](https://github.com/xxmod/Bilibili-Referer-Proxy/releases/download/1.0.0/Proxy-windows.zip)
-3. 根据包内说明配置 `rights.toml` 和相关文件
 
 ## 🚀 快速开始
 
@@ -238,7 +225,6 @@
 
 ### 环境要求
 
-
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-3.1.426-windows-x64-installer)
 
 ### 编译步骤
@@ -276,7 +262,6 @@ A: 确认 Cookie 信息正确，可尝试重新登录或使用二维码登录。
 **Q: 多P视频无法播放指定分P**
 A: 确保先使用 `!bilibili bv` 命令获取视频信息，再使用 `!bilibili p` 命令。
 
-
 ### 获取 Cookie 方法
 
 1. **打开浏览器**，访问 [bilibili.com](https://www.bilibili.com) 并登录
@@ -312,4 +297,3 @@ A: 确保先使用 `!bilibili bv` 命令获取视频信息，再使用 `!bilibil
 ---
 
 **如果这个项目对您有帮助，请给个 ⭐ Star 支持一下！**
-
